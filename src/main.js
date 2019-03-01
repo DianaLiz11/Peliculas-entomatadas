@@ -12,6 +12,8 @@ const buttonReturn= document.getElementById("return");
 buttonReturn.style.display="none";
 const cardContainer = document.getElementById('card-container');
 
+const search = document.getElementById('search');
+
 const moods= document.getElementsByClassName("mood");
 let dataMoviesProperties={};
 let selectedMovies = [];
@@ -33,7 +35,7 @@ const drawnCards = (movie) => {
       <p>Cast: ${movie.actors}</p>
       <p>Run time: ${movie.runTime}</p>
       <h5>Synopsis</h5>
-      <p>${movie.plot}.</p>
+      <p style="text-align:justify;">${movie.plot}.</p>
     </div>
   </div>`;
   cardContainer.insertAdjacentHTML("beforeend", card);
@@ -51,6 +53,7 @@ const showCards = (moviesList) => {
 for (let i=0; i<moods.length; i++){
     moods[i].addEventListener("click", ()=> {
       home.style.display="none";
+      cardContainer.style.display="block";
       buttonReturn.style.display="block";
         const moodValue= parseInt(moods[i].value);
         const arraySelected=movieArrays[moodValue];
@@ -78,6 +81,24 @@ const obtainDataJson = (title) => {
     })
 }
 
+const searchMovieJson = (title) => {
+  fetch('http://www.omdbapi.com/?apikey=2227c3b4&s='+title+'&type=movie&plot=full')
+    .then(responseSearch => responseSearch.json())
+    .then(dataMoviesSearch => {
+      if(dataMoviesSearch.Search.length != 0){
+        dataMoviesSearch.Search.forEach(element => {
+          obtainDataJson(element.Title);
+        });
+      }
+    })
+    .catch(error => {
+      console.log(error);
+      home.style.display="block";
+      cardContainer.style.display="none";
+      buttonReturn.style.display="none";
+    })
+}
+
 const obtainMovies = (movieArraySelected) => {
   for(let i = 0; i < 2; i++){
     const movieTitle = window.data.randomMovies(movieArraySelected);
@@ -91,3 +112,15 @@ returning.addEventListener("click", ()=>{
   buttonReturn.style.display="none";
   cardContainer.innerHTML = "";
 })
+
+search.addEventListener('blur', () => {
+  let movieToSearch = search.value;
+  if(movieToSearch.length != 0){
+    selectedMovies = [];
+    searchMovieJson(movieToSearch);
+    home.style.display="none";
+    cardContainer.style.display="block";
+    buttonReturn.style.display="block";
+    search.value = "";
+  }
+});
