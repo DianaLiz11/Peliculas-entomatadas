@@ -124,7 +124,7 @@ Se realizarán las pruebas de usabilidad con el producto en funcionamiento...
 
 # Instrucciones para usuarios
 
-1. Ingresa a la página [MoodVie](https://karenamicone.github.io/Peliculas-entomatadas/src/)
+1. Ingresa a la página [MoodVie](https://dianaliz11.github.io/Peliculas-entomatadas/src/)
 
 2. Haz click en el botón que coincida con tu estado de ánimo :bowtie: . Te recomendaremos dos películas de acuerdo con tu *mood*.
 
@@ -170,7 +170,7 @@ como toda la configuración de dependencias:
 # Instrucciones
 
 ## Obtener una copia local del repositorio
-1. Hacer un 🍴 fork de este repositorio: <https://github.com/KarenAmicone/Peliculas-entomatadas>
+1. Hacer un 🍴 fork de este repositorio: <https://github.com/DianaLiz11/Peliculas-entomatadas>
 
 2. Clonar el fork en tu computadora (copia local).
 
