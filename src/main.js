@@ -26,7 +26,7 @@ const drawnCards = (movie) => {
     <div class="card-image waves-effect waves-block waves-light">
       <img class="activator" src="${movie.poster}" alt="No Poster">
     </div>
-    <div class="card-content">
+    <div class="card-content size">
       <span class="card-title activator grey-text text-darken-4">${movie.title}<i class="material-icons right">more_vert</i></span>
       <p>${movie.year}</p>
       <p><a href="${movie.website}">${movie.website}</a></p>
